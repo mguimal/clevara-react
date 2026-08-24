@@ -14,6 +14,7 @@ import AboutSection from './components/AboutSection';
 import FaqSection from './components/FaqSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
+import GradualBlur from './components/GradualBlur';
 
 export default function App() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -39,6 +40,18 @@ export default function App() {
             <FaqSection />
             <ContactSection />
             <Footer />
+
+            <GradualBlur
+                target="page"
+                position="bottom"
+                height="4.5rem"
+                strength={2}
+                divCount={6}
+                curve="bezier"
+                exponential={true}
+                opacity={1}
+                zIndex={1000}
+            />
         </I18nProvider>
     );
 }
