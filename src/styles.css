@@ -81,10 +81,10 @@
 
         .navbar { position:fixed; top:15px; left:0; right:0; margin:0 auto; width:var(--navbar-width); padding:8px 25px; display:flex; align-items:center; justify-content:space-between; z-index:9999; transition:transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease; min-height:50px; border-radius:50px; transform:translateX(0); opacity:1; background:transparent; backdrop-filter:blur(0px); border:1px solid transparent; will-change:transform,opacity; }
         .navbar.top { background:transparent; backdrop-filter:blur(0px); box-shadow:none; border:1px solid transparent; }
-        .navbar.scrolled { background:var(--glass-bg)!important; backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); box-shadow:var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,0.3); border:1px solid var(--glass-border); border-top:1px solid rgba(255,255,255,0.4); border-bottom:1px solid rgba(255,255,255,0.1); animation:liquidGlass 0.5s ease-out; }
+        .navbar.scrolled { background:transparent!important; backdrop-filter:none; -webkit-backdrop-filter:none; border-color:transparent; }
         @media (max-width:992px) {
             .navbar { width:calc(100% - 20px); max-width:100%; }
-            .navbar.scrolled { background:var(--glass-bg)!important; backdrop-filter:blur(18px) saturate(180%); -webkit-backdrop-filter:blur(18px) saturate(180%); border-color:var(--glass-border); }
+            .navbar.scrolled { background:transparent!important; backdrop-filter:none; -webkit-backdrop-filter:none; border-color:transparent; }
             .logo-container{height:30px;}
             .logo{height:38px;margin-top:0;margin-bottom:0;margin-right:10px;}
         }

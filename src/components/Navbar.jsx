@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useI18n, T } from '../i18n/I18nContext';
+import { T } from '../i18n/I18nContext';
 import { NAV_LINKS, LOGO_URL } from '../data/content';
+import GlassSurface from './GlassSurface';
 import { handleAnchorClick } from '../lib/smoothScroll';
 
 export default function Navbar({ onToggleMenu }) {
@@ -29,6 +30,21 @@ export default function Navbar({ onToggleMenu }) {
 
     return (
         <nav className={`navbar ${mode}`} id="mainNavbar">
+            <GlassSurface
+                width="100%"
+                height="100%"
+                borderRadius={50}
+                className={`navbar-glass${mode === 'scrolled' ? ' navbar-glass--visible' : ''}`}
+                style={{ position: 'absolute', inset: 0 }}
+                backgroundOpacity={0.35}
+                saturation={1.8}
+                blur={11}
+                displace={0.7}
+                distortionScale={-140}
+                redOffset={5}
+                greenOffset={15}
+                blueOffset={25}
+            />
             <div className="navbar-glow-container">
                 <div className="glow-1"></div>
                 <div className="glow-2"></div>
