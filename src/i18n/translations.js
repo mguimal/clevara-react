@@ -333,6 +333,11 @@ export const translations = {
                 'footer.links2.privacy': 'Política de Privacidad',
                 'footer.links2.cookies': 'Política de Cookies',
                 'footer.links3.title': 'Contacto',
+                'contact.form.name.placeholder': 'Tu nombre completo',
+                'contact.form.email.placeholder': 'tu@email.com',
+                'contact.form.phone.placeholder': 'Tu número de teléfono',
+                'contact.form.clinic.placeholder': 'Nombre de tu clínica',
+                'contact.form.message.placeholder': 'Cuéntanos sobre tus necesidades específicas',
             },
             en: {
                 'nav.home': 'Home',
@@ -667,5 +672,10 @@ export const translations = {
                 'footer.links2.privacy': 'Privacy Policy',
                 'footer.links2.cookies': 'Cookie Policy',
                 'footer.links3.title': 'Contact',
+                'contact.form.name.placeholder': 'Your full name',
+                'contact.form.email.placeholder': 'your@email.com',
+                'contact.form.phone.placeholder': 'Your phone number',
+                'contact.form.clinic.placeholder': 'Your clinic name',
+                'contact.form.message.placeholder': 'Tell us about your specific needs',
             }
         };

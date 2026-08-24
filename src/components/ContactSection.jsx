@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { T } from '../i18n/I18nContext';
+import { useI18n, T } from '../i18n/I18nContext';
 import Reveal from './Reveal';
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mwpaekpk';
 
 export default function ContactSection() {
+    const { t } = useI18n();
     const hideTimer = useRef(null);
     const [status, setStatus] = useState('idle');
     const [popupOpen, setPopupOpen] = useState(false);
@@ -61,23 +62,23 @@ export default function ContactSection() {
                 )}
                 <div className="form-group">
                     <label htmlFor="name"><T k="contact.form.name" /></label>
-                    <input type="text" id="name" name="name" className="form-control" placeholder="Tu nombre completo" required />
+                    <input type="text" id="name" name="name" className="form-control" placeholder={t("contact.form.name.placeholder")} required />
                 </div>
                 <div className="form-group">
                     <label htmlFor="email"><T k="contact.form.email" /></label>
-                    <input type="email" id="email" name="email" className="form-control" placeholder="tu@email.com" required />
+                    <input type="email" id="email" name="email" className="form-control" placeholder={t("contact.form.email.placeholder")} required />
                 </div>
                 <div className="form-group">
                     <label htmlFor="phone"><T k="contact.form.phone" /></label>
-                    <input type="tel" id="phone" name="phone" className="form-control" placeholder="Tu número de teléfono" required />
+                    <input type="tel" id="phone" name="phone" className="form-control" placeholder={t("contact.form.phone.placeholder")} required />
                 </div>
                 <div className="form-group">
                     <label htmlFor="clinic"><T k="contact.form.clinic" /></label>
-                    <input type="text" id="clinic" name="clinic" className="form-control" placeholder="Nombre de tu clínica" />
+                    <input type="text" id="clinic" name="clinic" className="form-control" placeholder={t("contact.form.clinic.placeholder")} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="message"><T k="contact.form.message" /></label>
-                    <textarea id="message" name="message" className="form-control" rows="4" placeholder="Cuéntanos sobre tus necesidades específicas"></textarea>
+                    <textarea id="message" name="message" className="form-control" rows="4" placeholder={t("contact.form.message.placeholder")}></textarea>
                 </div>
                 <input type="text" name="_gotcha" style={{ display: 'none' }} />
                 <button type="submit" className="submit-btn" id="submitBtn" disabled={status === 'loading'}>
