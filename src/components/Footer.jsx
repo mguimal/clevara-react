@@ -38,7 +38,7 @@ export default function Footer() {
                 <Reveal className="footer-links" delay={0.15}>
                     <h3><T k="footer.links3.title" /></h3>
                     <ul>
-                        <li>Email: clevarastudios@gmail.com</li>
+                        <li>Email: info@clevarastudios.com</li>
                         <li>Teléfono: +34 696 707 913</li>
                     </ul>
                 </Reveal>
