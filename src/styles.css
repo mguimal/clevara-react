@@ -1644,3 +1644,27 @@
             .form-row { grid-template-columns: 1fr; gap: 0; }
             .contact-info { padding: 32px 26px; }
         }
+
+        /* ===== AJUSTES: hovers más rápidos + panel de contacto azul de marca ===== */
+        .benefit-premium-card {
+            transition:
+                transform 0.16s ease-out,
+                box-shadow 0.16s ease-out,
+                border-color 0.16s ease-out;
+        }
+        .bpc-icon { transition: all 0.18s ease-out; }
+        .value-card {
+            transition:
+                transform 0.16s ease-out,
+                box-shadow 0.16s ease-out,
+                background 0.16s ease-out,
+                border-color 0.16s ease-out;
+        }
+        .value-icon { transition: all 0.18s ease-out; }
+        .contact-info {
+            background:
+                radial-gradient(ellipse at 115% -10%, rgba(56, 189, 248, 0.32), transparent 52%),
+                linear-gradient(130deg, #2563eb 0%, #1d4ed8 55%, #2563eb 125%);
+            border-color: rgba(147, 197, 253, 0.32);
+            box-shadow: 0 26px 56px -22px rgba(37, 99, 235, 0.6);
+        }
