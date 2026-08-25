@@ -338,6 +338,11 @@ export const translations = {
                 'contact.form.phone.placeholder': 'Tu número de teléfono',
                 'contact.form.clinic.placeholder': 'Nombre de tu clínica',
                 'contact.form.message.placeholder': 'Cuéntanos sobre tus necesidades específicas',
+                'benefits.loss.eyebrow': 'La oportunidad',
+                'benefits.loss.stat': '+7.000 €',
+                'benefits.loss.statUnit': 'al mes',
+                'benefits.loss.statNote': 'Ingresos no captados',
+                'benefits.loss.caption': 'De media, las clínicas dejan de ingresar esta cantidad cada mes por no atender consultas fuera de horario.',
             },
             en: {
                 'nav.home': 'Home',
@@ -677,5 +682,10 @@ export const translations = {
                 'contact.form.phone.placeholder': 'Your phone number',
                 'contact.form.clinic.placeholder': 'Your clinic name',
                 'contact.form.message.placeholder': 'Tell us about your specific needs',
+                'benefits.loss.eyebrow': 'The opportunity',
+                'benefits.loss.stat': '+7,000 €',
+                'benefits.loss.statUnit': 'per month',
+                'benefits.loss.statNote': 'Uncaptured revenue',
+                'benefits.loss.caption': 'On average, clinics are missing out on this amount every month simply because inquiries go unanswered outside business hours.',
             }
         };

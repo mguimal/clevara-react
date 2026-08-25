@@ -4,6 +4,30 @@ import RoiCalculator from './RoiCalculator';
 import { BENEFIT_ROWS } from '../data/content';
 import { handleAnchorClick } from '../lib/smoothScroll';
 
+function PremiumStatsBanner() {
+    return (
+        <Reveal variant="fade-in" delay={0.15} className="premium-stats-banner">
+            <div className="psb-glow psb-glow--1"></div>
+            <div className="psb-glow psb-glow--2"></div>
+            <div className="psb-main">
+                <span className="psb-eyebrow"><T k="benefits.loss.eyebrow" /></span>
+                <h3 className="psb-title"><T k="benefits.loss.title" /></h3>
+                <p className="psb-caption"><T k="benefits.loss.caption" /></p>
+                <div className="psb-lines">
+                    <p><T k="benefits.loss.p2" /></p>
+                    <p className="psb-sub"><T k="benefits.loss.p3" /></p>
+                </div>
+            </div>
+            <div className="psb-stat">
+                <i className="fas fa-arrow-trend-up psb-stat-icon"></i>
+                <span className="psb-stat-number"><T k="benefits.loss.stat" /></span>
+                <span className="psb-stat-unit"><T k="benefits.loss.statUnit" /></span>
+                <span className="psb-stat-note"><T k="benefits.loss.statNote" /></span>
+            </div>
+        </Reveal>
+    );
+}
+
 export default function BenefitsSection() {
     return (
         <section id="beneficios" className="benefits">
@@ -12,27 +36,18 @@ export default function BenefitsSection() {
                 <Reveal as="p" variant="fade-in" delay={0.1}><T k="benefits.subtitle" /></Reveal>
             </div>
 
-            <Reveal variant="fade-in" delay={0.15} className="loss-card">
-                <h3>
-                    <i className="fas fa-chart-line"></i> <span><T k="benefits.loss.title" /></span>
-                </h3>
-                <T as="p" k="benefits.loss.p1" />
-                <p><span className="highlight"><T k="benefits.loss.p2" /></span></p>
-                <p className="loss-subtitle"><T k="benefits.loss.p3" /></p>
-            </Reveal>
+            <PremiumStatsBanner />
 
             <RoiCalculator />
 
-            <div className="benefits-container">
+            <div className="benefits-premium-grid">
                 {BENEFIT_ROWS.map((row) => (
-                    <Reveal key={row.titleKey} variant="fade-in" delay={row.delay} className="benefit-row">
-                        <div className="benefit-image-left">
+                    <Reveal key={row.titleKey} variant="fade-in" delay={row.delay} className="benefit-premium-card">
+                        <div className="bpc-icon">
                             <i className={`fas ${row.icon}`}></i>
                         </div>
-                        <div className="benefit-header-left">
-                            <h3><T k={row.titleKey} /></h3>
-                        </div>
-                        <T as="div" className="benefit-text" k={row.descKey} />
+                        <h3><T k={row.titleKey} /></h3>
+                        <T as="p" className="bpc-text" k={row.descKey} />
                     </Reveal>
                 ))}
             </div>

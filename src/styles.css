@@ -1311,3 +1311,168 @@
         .offscreen .liquid-drops span,
         .offscreen::before,
         .offscreen .expand-indicator { animation-play-state:paused !important; }
+
+        /* ===== BENEFICIOS PREMIUM ===== */
+        .premium-stats-banner {
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.25fr auto;
+            gap: 40px;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 26px;
+            padding: 46px 52px;
+            border-radius: 28px;
+            color: #fff;
+            background: linear-gradient(135deg, #0b1530 0%, #0e1e4a 55%, #123a8c 130%);
+            border: 1px solid rgba(148, 183, 255, 0.16);
+            box-shadow: 0 30px 60px -20px rgba(13, 32, 84, 0.45);
+        }
+        .psb-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            pointer-events: none;
+        }
+        .psb-glow--1 { width: 340px; height: 340px; right: -80px; top: -140px; background: rgba(37, 99, 235, 0.35); }
+        .psb-glow--2 { width: 280px; height: 280px; left: -100px; bottom: -160px; background: rgba(14, 165, 233, 0.22); }
+        .psb-main { position: relative; z-index: 1; }
+        .psb-eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #93c5fd;
+            margin-bottom: 14px;
+        }
+        .psb-title {
+            font-size: clamp(1.5rem, 2.6vw, 2rem);
+            font-weight: 700;
+            margin: 0 0 10px;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+        }
+        .psb-caption {
+            font-size: 1rem;
+            line-height: 1.65;
+            color: rgba(226, 236, 255, 0.85);
+            max-width: 520px;
+            margin: 0 0 18px;
+        }
+        .psb-lines p { margin: 0; font-size: 0.98rem; color: rgba(226, 236, 255, 0.92); }
+        .psb-lines p + p { margin-top: 6px; color: #93c5fd; font-weight: 500; }
+        .psb-stat {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 30px 38px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(148, 183, 255, 0.18);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            min-width: 240px;
+        }
+        .psb-stat-icon { font-size: 1.2rem; color: #60a5fa; margin-bottom: 12px; }
+        .psb-stat-number {
+            display: block;
+            font-size: clamp(2.4rem, 4vw, 3.2rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            background: linear-gradient(120deg, #dbeafe 0%, #60a5fa 55%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.05;
+        }
+        .psb-stat-unit { display: block; margin-top: 6px; font-size: 0.95rem; font-weight: 600; color: rgba(226, 236, 255, 0.9); }
+        .psb-stat-note {
+            display: block;
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(148, 183, 255, 0.15);
+            font-size: 0.7rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(147, 197, 253, 0.75);
+            font-weight: 600;
+        }
+
+        .benefits-premium-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            width: 100%;
+        }
+        .benefit-premium-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 32px 28px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(10px) saturate(150%);
+            -webkit-backdrop-filter: blur(10px) saturate(150%);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 32px -18px rgba(15, 23, 42, 0.12);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+        .benefit-premium-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(37, 99, 235, 0.35);
+            box-shadow: 0 24px 48px -20px rgba(37, 99, 235, 0.25), 0 2px 6px rgba(15, 23, 42, 0.05);
+        }
+        .bpc-icon {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border: 1px solid rgba(37, 99, 235, 0.12);
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            transition: all 0.35s ease;
+        }
+        .benefit-premium-card:hover .bpc-icon {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            border-color: transparent;
+            transform: scale(1.06) rotate(-3deg);
+            box-shadow: 0 10px 24px -8px rgba(37, 99, 235, 0.5);
+        }
+        .benefit-premium-card h3 {
+            margin: 0;
+            font-size: 1.12rem;
+            font-weight: 600;
+            color: var(--text-color);
+            letter-spacing: -0.01em;
+        }
+        .bpc-text {
+            margin: 0;
+            font-size: 0.93rem;
+            line-height: 1.6;
+            color: var(--text-color);
+            opacity: 0.75;
+        }
+        .bpc-text strong { color: var(--primary-color); font-weight: 600; }
+
+        @media (max-width: 1024px) {
+            .benefits-premium-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .premium-stats-banner {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding: 34px 26px;
+                border-radius: 24px;
+                text-align: left;
+            }
+            .psb-stat { min-width: 0; width: 100%; padding: 24px; }
+            .benefits-premium-grid { grid-template-columns: 1fr; gap: 14px; }
+        }
