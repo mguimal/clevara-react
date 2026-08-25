@@ -1668,3 +1668,13 @@
             border-color: rgba(147, 197, 253, 0.32);
             box-shadow: 0 26px 56px -22px rgba(37, 99, 235, 0.6);
         }
+
+        /* Hovers aún más rápidos y sincronizados (tarjeta + icono al mismo tiempo) */
+        .benefit-premium-card,
+        .bpc-icon {
+            transition: all 0.1s ease-out !important;
+        }
+        .value-card,
+        .value-icon {
+            transition: all 0.1s ease-out !important;
+        }
