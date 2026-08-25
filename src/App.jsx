@@ -7,6 +7,7 @@ import LangToggle from './components/LangToggle';
 import Navbar from './components/Navbar';
 import MobileMenu from './components/MobileMenu';
 import Hero from './components/Hero';
+import StatsBand from './components/StatsBand';
 import ClebotsSection from './components/ClebotsSection';
 import StrategySection from './components/StrategySection';
 import BenefitsSection from './components/BenefitsSection';
@@ -32,6 +33,8 @@ export default function App() {
             <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
 
             <Hero />
+
+            <StatsBand />
 
             <ClebotsSection expandedCard={expandedCard} onToggleCard={toggleCard} />
             <StrategySection expandedCard={expandedCard} onToggleCard={toggleCard} />

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useI18n, T } from '../i18n/I18nContext';
+import { T, useI18n } from '../i18n/I18nContext';
 import Reveal from './Reveal';
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mwpaekpk';
@@ -43,55 +43,90 @@ export default function ContactSection() {
                 <Reveal as="h2" variant="fade-in"><T k="contact.title" /></Reveal>
                 <Reveal as="p" variant="fade-in" delay={0.1}><T k="contact.subtitle" /></Reveal>
             </div>
-            <Reveal
-                as="form"
-                variant="scale-in"
-                className="contact-form"
-                id="contactForm"
-                onSubmit={onSubmit}
-            >
-                <input type="hidden" name="_next" value="https://tusitio.com/gracias.html" />
-                <input type="hidden" name="_subject" value="Nueva solicitud de CleBot™ Gratis" />
-                <input type="hidden" name="_language" value="es" />
-                {status !== 'idle' && (
-                    <div className={`form-message ${status === 'loading' ? 'loading' : status === 'success' ? 'success' : 'error'}`} id="formMessage">
-                        {status === 'loading' && 'Enviando...'}
-                        {status === 'success' && '¡Formulario enviado con éxito!'}
-                        {status === 'error' && 'Error al enviar. Intenta nuevamente.'}
+
+            <div className="contact-layout">
+                <Reveal className="contact-info">
+                    <h3><T k="contact.info.title" /></h3>
+                    <p className="ci-text"><T k="contact.info.text" /></p>
+                    <ul className="ci-list">
+                        <li>
+                            <span className="ci-ico"><i className="fas fa-bolt"></i></span>
+                            <T k="contact.info.b1" />
+                        </li>
+                        <li>
+                            <span className="ci-ico"><i className="fas fa-sliders"></i></span>
+                            <T k="contact.info.b2" />
+                        </li>
+                        <li>
+                            <span className="ci-ico"><i className="fas fa-shield-halved"></i></span>
+                            <T k="contact.info.b3" />
+                        </li>
+                    </ul>
+                    <div className="ci-direct">
+                        <a href="mailto:info@clevarastudios.com">
+                            <i className="fas fa-envelope"></i> info@clevarastudios.com
+                        </a>
+                        <a href="tel:+34696707913">
+                            <i className="fas fa-phone"></i> +34 696 707 913
+                        </a>
                     </div>
-                )}
-                <div className="form-group">
-                    <label htmlFor="name"><T k="contact.form.name" /></label>
-                    <input type="text" id="name" name="name" className="form-control" placeholder={t("contact.form.name.placeholder")} required />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="email"><T k="contact.form.email" /></label>
-                    <input type="email" id="email" name="email" className="form-control" placeholder={t("contact.form.email.placeholder")} required />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="phone"><T k="contact.form.phone" /></label>
-                    <input type="tel" id="phone" name="phone" className="form-control" placeholder={t("contact.form.phone.placeholder")} required />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="clinic"><T k="contact.form.clinic" /></label>
-                    <input type="text" id="clinic" name="clinic" className="form-control" placeholder={t("contact.form.clinic.placeholder")} />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="message"><T k="contact.form.message" /></label>
-                    <textarea id="message" name="message" className="form-control" rows="4" placeholder={t("contact.form.message.placeholder")}></textarea>
-                </div>
-                <input type="text" name="_gotcha" style={{ display: 'none' }} />
-                <button type="submit" className="submit-btn" id="submitBtn" disabled={status === 'loading'}>
-                    {status === 'loading' ? (
-                        <>
-                            <span>Enviando...</span>
-                            <span className="loading-spinner" style={{ display: 'inline-block' }}></span>
-                        </>
-                    ) : (
-                        <T as="span" k="contact.form.submit" />
+                </Reveal>
+
+                <Reveal
+                    as="form"
+                    variant="scale-in"
+                    delay={0.1}
+                    className="contact-form"
+                    id="contactForm"
+                    onSubmit={onSubmit}
+                >
+                    {status !== 'idle' && (
+                        <div className={`form-message ${status === 'loading' ? 'loading' : status === 'success' ? 'success' : 'error'}`} id="formMessage">
+                            {status === 'loading' && 'Enviando...'}
+                            {status === 'success' && '¡Formulario enviado con éxito!'}
+                            {status === 'error' && 'Error al enviar. Intenta nuevamente.'}
+                        </div>
                     )}
-                </button>
-            </Reveal>
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label htmlFor="name"><T k="contact.form.name" /></label>
+                            <input type="text" id="name" name="name" className="form-control" placeholder={t('contact.form.name.placeholder')} required />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="email"><T k="contact.form.email" /></label>
+                            <input type="email" id="email" name="email" className="form-control" placeholder={t('contact.form.email.placeholder')} required />
+                        </div>
+                    </div>
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label htmlFor="phone"><T k="contact.form.phone" /></label>
+                            <input type="tel" id="phone" name="phone" className="form-control" placeholder={t('contact.form.phone.placeholder')} required />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="clinic"><T k="contact.form.clinic" /></label>
+                            <input type="text" id="clinic" name="clinic" className="form-control" placeholder={t('contact.form.clinic.placeholder')} />
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="message"><T k="contact.form.message" /></label>
+                        <textarea id="message" name="message" className="form-control" rows="4" placeholder={t('contact.form.message.placeholder')}></textarea>
+                    </div>
+                    <input type="text" name="_gotcha" style={{ display: 'none' }} />
+                    <input type="hidden" name="_next" value="https://tusitio.com/gracias.html" />
+                    <input type="hidden" name="_subject" value="Nueva solicitud de CleBot™ Gratis" />
+                    <input type="hidden" name="_language" value="es" />
+                    <button type="submit" className="submit-btn" id="submitBtn" disabled={status === 'loading'}>
+                        {status === 'loading' ? (
+                            <>
+                                <span>Enviando...</span>
+                                <span className="loading-spinner" style={{ display: 'inline-block' }}></span>
+                            </>
+                        ) : (
+                            <T as="span" k="contact.form.submit" />
+                        )}
+                    </button>
+                </Reveal>
+            </div>
 
             <div
                 className={`popup-overlay${popupOpen ? ' active' : ''}`}
