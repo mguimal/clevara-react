@@ -7,19 +7,17 @@ import { handleAnchorClick } from '../lib/smoothScroll';
 function PremiumStatsBanner() {
     return (
         <Reveal variant="fade-in" delay={0.15} className="premium-stats-banner">
-            <div className="psb-glow psb-glow--1"></div>
-            <div className="psb-glow psb-glow--2"></div>
+            <div className="psb-icon">
+                <i className="fas fa-arrow-trend-up"></i>
+            </div>
             <div className="psb-main">
                 <span className="psb-eyebrow"><T k="benefits.loss.eyebrow" /></span>
                 <h3 className="psb-title"><T k="benefits.loss.title" /></h3>
                 <p className="psb-caption"><T k="benefits.loss.caption" /></p>
-                <div className="psb-lines">
-                    <p><T k="benefits.loss.p2" /></p>
-                    <p className="psb-sub"><T k="benefits.loss.p3" /></p>
-                </div>
+                <p className="psb-sub"><T k="benefits.loss.p3" /></p>
             </div>
+            <div className="psb-divider"></div>
             <div className="psb-stat">
-                <i className="fas fa-arrow-trend-up psb-stat-icon"></i>
                 <span className="psb-stat-number"><T k="benefits.loss.stat" /></span>
                 <span className="psb-stat-unit"><T k="benefits.loss.statUnit" /></span>
                 <span className="psb-stat-note"><T k="benefits.loss.statNote" /></span>

@@ -15,7 +15,7 @@ export default function Hero() {
                 <p className="hero-subtitle"><T k="hero.subtitle" /></p>
                 <div className="hero-buttons">
                     <SpecularButton
-                        size="lg"
+                        size="md"
                         radius={30}
                         tint="#ffffff"
                         tintOpacity={0}

@@ -331,8 +331,10 @@
         .service-tagline { font-size:1.05rem; color:var(--text-color); margin-bottom:0; font-weight:400; opacity:0.8; position:relative; z-index:2; transition:opacity 0.3s ease; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; }
         .service-summary { display:none; }
         .service-card.expanded .service-summary { display:block; color:var(--text-color); font-weight:400; line-height:1.6; opacity:0.85; position:relative; z-index:2; margin-top:20px; font-size:1rem; }
-        .service-card .service-details { max-height:0; opacity:0; overflow:hidden; transition:max-height 0.7s var(--ease-extra-smooth),opacity 0.5s ease 0.1s,margin 0.5s var(--ease-extra-smooth); margin-top:0; text-align:left; position:relative; z-index:2; }
-        .service-card.expanded .service-details { max-height:3000px; opacity:1; margin-top:35px; }
+        .service-card .service-details { display:grid; grid-template-rows:0fr; opacity:0; transform:translateY(-10px); transition:grid-template-rows 0.75s cubic-bezier(0.22,1,0.36,1),opacity 0.5s ease,transform 0.75s cubic-bezier(0.22,1,0.36,1),margin-top 0.75s cubic-bezier(0.22,1,0.36,1); margin-top:0; text-align:left; position:relative; z-index:2; }
+        .service-details > .service-details-content { overflow:hidden; min-height:0; }
+        .service-card.expanded .service-details-content { transform:translateY(0); transition:transform 0.9s cubic-bezier(0.22,1,0.36,1) 0.08s; }
+        .service-card.expanded .service-details { grid-template-rows:1fr; opacity:1; margin-top:35px; }
         .service-details-content { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:stretch; }
         .service-details-column { display:flex; flex-direction:column; gap:25px; }
         .benefits-grid { display:flex; flex-direction:column; gap:20px; height:100%; }
@@ -1316,88 +1318,111 @@
         .premium-stats-banner {
             position: relative;
             overflow: hidden;
-            display: grid;
-            grid-template-columns: 1.25fr auto;
-            gap: 40px;
+            display: flex;
             align-items: center;
+            gap: 22px;
             width: 100%;
             margin-bottom: 26px;
-            padding: 46px 52px;
-            border-radius: 28px;
+            padding: 24px 30px;
+            border-radius: 20px;
             color: #fff;
-            background: linear-gradient(135deg, #0b1530 0%, #0e1e4a 55%, #123a8c 130%);
-            border: 1px solid rgba(148, 183, 255, 0.16);
-            box-shadow: 0 30px 60px -20px rgba(13, 32, 84, 0.45);
+            background: linear-gradient(115deg, #2563eb 0%, #1d4ed8 55%, #1e40af 100%);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 18px 44px -18px rgba(37, 99, 235, 0.55);
         }
-        .psb-glow {
+        .premium-stats-banner::after {
+            content: '';
             position: absolute;
-            border-radius: 50%;
-            filter: blur(70px);
+            top: -60%;
+            right: -6%;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.16), transparent 70%);
             pointer-events: none;
         }
-        .psb-glow--1 { width: 340px; height: 340px; right: -80px; top: -140px; background: rgba(37, 99, 235, 0.35); }
-        .psb-glow--2 { width: 280px; height: 280px; left: -100px; bottom: -160px; background: rgba(14, 165, 233, 0.22); }
-        .psb-main { position: relative; z-index: 1; }
+        .psb-icon {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            font-size: 1.25rem;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+        .psb-main { flex: 1; min-width: 0; }
         .psb-eyebrow {
             display: inline-block;
-            font-size: 0.72rem;
+            font-size: 0.65rem;
             font-weight: 700;
-            letter-spacing: 0.18em;
+            letter-spacing: 0.16em;
             text-transform: uppercase;
-            color: #93c5fd;
-            margin-bottom: 14px;
+            color: #bfdbfe;
+            margin-bottom: 6px;
         }
         .psb-title {
-            font-size: clamp(1.5rem, 2.6vw, 2rem);
+            font-size: 1.2rem;
             font-weight: 700;
-            margin: 0 0 10px;
-            letter-spacing: -0.02em;
+            margin: 0 0 5px;
+            letter-spacing: -0.01em;
             color: #ffffff;
         }
         .psb-caption {
-            font-size: 1rem;
-            line-height: 1.65;
-            color: rgba(226, 236, 255, 0.85);
-            max-width: 520px;
-            margin: 0 0 18px;
+            font-size: 0.9rem;
+            line-height: 1.55;
+            color: rgba(226, 236, 255, 0.88);
+            margin: 0 0 6px;
         }
-        .psb-lines p { margin: 0; font-size: 0.98rem; color: rgba(226, 236, 255, 0.92); }
-        .psb-lines p + p { margin-top: 6px; color: #93c5fd; font-weight: 500; }
+        .psb-sub {
+            margin: 0;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #bfdbfe;
+        }
+        .psb-divider {
+            align-self: stretch;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.35), transparent);
+        }
         .psb-stat {
-            position: relative;
-            z-index: 1;
+            flex-shrink: 0;
             text-align: center;
-            padding: 30px 38px;
-            border-radius: 22px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(148, 183, 255, 0.18);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            min-width: 240px;
+            padding: 14px 26px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
         }
-        .psb-stat-icon { font-size: 1.2rem; color: #60a5fa; margin-bottom: 12px; }
         .psb-stat-number {
             display: block;
-            font-size: clamp(2.4rem, 4vw, 3.2rem);
+            font-size: 2.1rem;
             font-weight: 800;
             letter-spacing: -0.03em;
-            background: linear-gradient(120deg, #dbeafe 0%, #60a5fa 55%, #38bdf8 100%);
+            background: linear-gradient(120deg, #ffffff 20%, #bfdbfe 70%, #7dd3fc 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1.05;
+            white-space: nowrap;
         }
-        .psb-stat-unit { display: block; margin-top: 6px; font-size: 0.95rem; font-weight: 600; color: rgba(226, 236, 255, 0.9); }
+        .psb-stat-unit { display: block; margin-top: 3px; font-size: 0.82rem; font-weight: 600; color: rgba(226, 236, 255, 0.92); }
         .psb-stat-note {
             display: block;
-            margin-top: 14px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(148, 183, 255, 0.15);
-            font-size: 0.7rem;
-            letter-spacing: 0.14em;
+            margin-top: 8px;
+            padding-top: 7px;
+            border-top: 1px solid rgba(255, 255, 255, 0.18);
+            font-size: 0.58rem;
+            letter-spacing: 0.13em;
             text-transform: uppercase;
-            color: rgba(147, 197, 253, 0.75);
+            color: rgba(191, 219, 254, 0.85);
             font-weight: 600;
+            white-space: nowrap;
         }
 
         .benefits-premium-grid {
@@ -1465,14 +1490,13 @@
         @media (max-width: 1024px) {
             .benefits-premium-grid { grid-template-columns: repeat(2, 1fr); }
         }
+        @media (max-width: 900px) {
+            .premium-stats-banner { flex-wrap: wrap; padding: 22px 24px; }
+            .psb-divider { display: none; }
+            .psb-stat { width: 100%; display: flex; align-items: baseline; justify-content: center; gap: 10px; padding: 12px 16px; }
+            .psb-stat-number { font-size: 1.7rem; }
+            .psb-stat-note { display: none; }
+        }
         @media (max-width: 768px) {
-            .premium-stats-banner {
-                grid-template-columns: 1fr;
-                gap: 24px;
-                padding: 34px 26px;
-                border-radius: 24px;
-                text-align: left;
-            }
-            .psb-stat { min-width: 0; width: 100%; padding: 24px; }
             .benefits-premium-grid { grid-template-columns: 1fr; gap: 14px; }
         }
