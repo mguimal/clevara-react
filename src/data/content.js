@@ -205,10 +205,10 @@ export const FOOTER_LEGAL_LINKS = [
 ];
 
 export const INTEGRATIONS = [
-    { name: 'WhatsApp Business', subKey: 'int.s1', slug: 'whatsapp', color: '25D366' },
-    { name: 'Google Workspace', subKey: 'int.s4', slug: 'googleworkspace', color: '4285F4' },
-    { name: 'Office 365', subKey: 'int.s5', slug: 'microsoft365', color: 'D83B01' },
-    { name: 'HubSpot', subKey: 'int.s6', slug: 'hubspot', color: 'FF7A59' },
-    { name: 'Zoho CRM', subKey: 'int.s7', slug: 'zoho', color: 'E42527' },
-    { name: 'Salesforce', subKey: 'int.s8', slug: 'salesforce', color: '00A1E0' },
+    { name: 'WhatsApp Business', subKey: 'int.s1', domain: 'whatsapp.com', color: '25D366' },
+    { name: 'Google Workspace', subKey: 'int.s4', domain: 'workspace.google.com', color: '4285F4' },
+    { name: 'Office 365', subKey: 'int.s5', domain: 'microsoft.com', color: 'D83B01' },
+    { name: 'HubSpot', subKey: 'int.s6', domain: 'hubspot.com', color: 'FF7A59' },
+    { name: 'Zoho CRM', subKey: 'int.s7', domain: 'zoho.com', color: 'E42527' },
+    { name: 'Salesforce', subKey: 'int.s8', domain: 'salesforce.com', color: '00A1E0' },
 ];
