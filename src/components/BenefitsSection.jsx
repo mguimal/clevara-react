@@ -1,6 +1,7 @@
 import { T } from '../i18n/I18nContext';
 import Reveal from './Reveal';
 import RoiCalculator from './RoiCalculator';
+import DemoVideo from './DemoVideo';
 import { BENEFIT_ROWS } from '../data/content';
 import { handleAnchorClick } from '../lib/smoothScroll';
 
@@ -35,6 +36,21 @@ export default function BenefitsSection() {
             </div>
 
             <PremiumStatsBanner />
+
+            <div className="demo-block">
+                <Reveal variant="slide-in-left" className="demo-copy">
+                    <span className="demo-eyebrow"><T k="demo.eyebrow" /></span>
+                    <h3><T k="demo.title" /></h3>
+                    <p className="demo-sub"><T k="demo.subtitle" /></p>
+                    <ul className="demo-bullets">
+                        <li><i className="fas fa-check"></i> <T k="demo.bullet1" /></li>
+                        <li><i className="fas fa-check"></i> <T k="demo.bullet2" /></li>
+                    </ul>
+                </Reveal>
+                <Reveal variant="fade-in" delay={0.15}>
+                    <DemoVideo />
+                </Reveal>
+            </div>
 
             <RoiCalculator />
 
