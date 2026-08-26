@@ -18,8 +18,12 @@ export default function IntegrationsSection() {
                         delay={0.1 + i * 0.08}
                         className="int-tile"
                     >
-                        <span className="int-icon" style={{ color: intg.color, background: `${intg.color}16`, borderColor: `${intg.color}33` }}>
-                            <i className={intg.icon}></i>
+                        <span className="int-icon" style={{ background: `${'#'}${intg.color}14`, borderColor: `${'#'}${intg.color}30` }}>
+                            <img
+                                src={`https://cdn.simpleicons.org/${intg.slug}/${intg.color}`}
+                                alt={intg.name}
+                                loading="lazy"
+                            />
                         </span>
                         <strong>{intg.name}</strong>
                         <small><T k={intg.subKey} /></small>

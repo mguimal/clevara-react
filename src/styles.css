@@ -2359,9 +2359,14 @@
         .integraciones { position: relative; }
         .int-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 14px;
             width: 100%;
+        }
+        .int-icon img {
+            width: 26px;
+            height: 26px;
+            display: block;
         }
         .int-tile {
             display: flex;
@@ -2429,6 +2434,7 @@
         }
         .int-note a:hover { border-color: var(--primary-color); }
         @media (max-width: 1024px) { .int-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 640px) { .int-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 576px) { .int-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
 
         /* Scrollspy: texto blanco sobre la pildora activa */
