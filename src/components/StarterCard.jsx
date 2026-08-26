@@ -5,7 +5,7 @@ import { handleAnchorClick } from '../lib/smoothScroll';
 import useTilt from '../hooks/useTilt';
 
 export default function StarterCard({ expanded, onToggle }) {
-    const tilt = useTilt(expanded, 1.35);
+    const tilt = useTilt(expanded, 1.15);
     return (
         <Reveal className="starter-wrapper" delay={0.15}>
             <div className="starter-badge"><T k="clebots.starter.badge" /></div>

@@ -1,13 +1,8 @@
 import { T } from '../i18n/I18nContext';
-import CountUp from './CountUp';
 
 export default function StatsBand() {
     return (
         <div className="stats-band">
-            <div className="sb-item">
-                <CountUp end={120} prefix="+" />
-                <span className="sb-label"><T k="about.intro.stat1" /></span>
-            </div>
             <div className="sb-item">
                 <CountUp end={65} suffix="%" />
                 <span className="sb-label"><T k="about.intro.stat2" /></span>

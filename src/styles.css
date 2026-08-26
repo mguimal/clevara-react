@@ -1506,11 +1506,11 @@
             width: var(--navbar-width);
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 1px;
-            background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.25), transparent);
-            border-top: 1px solid rgba(37, 99, 235, 0.14);
-            border-bottom: 1px solid rgba(37, 99, 235, 0.14);
+            background: rgba(15, 23, 42, 0.1);
+            border-top: 1px solid rgba(15, 23, 42, 0.07);
+            border-bottom: 1px solid rgba(15, 23, 42, 0.07);
             padding: 36px 0;
         }
         .sb-item {
@@ -1528,7 +1528,7 @@
             top: 15%;
             bottom: 15%;
             width: 1px;
-            background: linear-gradient(to bottom, transparent, rgba(37, 99, 235, 0.22), transparent);
+            background: linear-gradient(to bottom, transparent, rgba(15, 23, 42, 0.16), transparent);
         }
         .stats-band .stat-number,
         .sb-static {
@@ -1550,10 +1550,7 @@
             text-transform: uppercase;
             color: #64748b;
         }
-        @media (max-width: 768px) {
-            .stats-band { grid-template-columns: repeat(2, 1fr); row-gap: 26px; }
-            .sb-item:nth-child(3)::before { display: none; }
-        }
+
 
         /* ===== CONTACTO EN DOS COLUMNAS ===== */
         .contact-layout {
