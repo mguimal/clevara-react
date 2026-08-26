@@ -1,23 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
 import { T } from '../i18n/I18nContext';
 
-const DURATION = 25.5;
-const TYPING_1 = [1.7, 3.1];
-const TYPING_2 = [4.7, 6.1];
-const THINK_START = 8.6;
-const CAL_START = 13.4;
-const CONFIRM_AT = 14.9;
-const REMINDER_AT = 16.3;
-const OUTRO_AT = 18.8;
+const DURATION = 27.5;
+const THINK_START = 10.2;
+const CAL_START = 16.2;
+const OUTRO_AT = 21.0;
+
+const THINK_KEYS = ['demo.think1', 'demo.think2', 'demo.think3', 'demo.think4', 'demo.think5'];
+const THINK_ICONS = ['fa-calendar-days', 'fa-clock', 'fa-user-clock', 'fa-user-doctor', 'fa-paper-plane'];
 
 export default function DemoVideo() {
     const [t, setT] = useState(0);
-    const frozenRef = useRef(false);
 
     useEffect(() => {
         if (document.documentElement.classList.contains('low-power')) {
-            frozenRef.current = true;
-            setT(17.2);
+            setT(18.4);
             return undefined;
         }
         let start = performance.now();
@@ -33,22 +30,26 @@ export default function DemoVideo() {
         return () => cancelAnimationFrame(raf);
     }, []);
 
-    const inChat = t < THINK_START;
-    const thinking = t >= THINK_START && t < CAL_START;
-    const calendar = t >= CAL_START;
+    const chatScene = t < THINK_START;
+    const thinkScene = t >= THINK_START && t < CAL_START;
+    const calScene = t >= CAL_START;
     const outro = t >= OUTRO_AT;
 
     const showP1 = t >= 0.35;
-    const showTyping1 = t >= TYPING_1[0] && t < TYPING_1[1];
-    const showBot = t >= TYPING_1[1];
-    const showTyping2 = t >= TYPING_2[0] && t < TYPING_2[1];
-    const showP2 = t >= TYPING_2[1];
+    const showTyping1 = t >= 1.7 && t < 3.1;
+    const showBot = t >= 3.1;
+    const showTyping2 = t >= 4.9 && t < 6.3;
+    const showP2 = t >= 6.3;
+    const showTyping3 = t >= 7.6 && t < 8.6;
+    const showBot2 = t >= 8.6;
+    const showTicks = t >= 7.2;
 
-    const thinkIdx = t < 10.15 ? 0 : t < 11.75 ? 1 : 2;
+    let thinkIdx = Math.floor((t - THINK_START) / 1.2);
+    thinkIdx = Math.max(0, Math.min(THINK_KEYS.length - 1, thinkIdx));
 
     return (
         <div className="demo-stage">
-            <div className={`demo-window${outro ? ' is-outro' : ''}`}>
+            <div className="demo-window">
                 <div className="demo-chrome">
                     <span className="dc-dot dc-red"></span>
                     <span className="dc-dot dc-yellow"></span>
@@ -58,79 +59,78 @@ export default function DemoVideo() {
                 </div>
 
                 <div className="demo-body">
-                    {/* Panel de chat (izquierda) */}
-                    <div className="demo-chat">
-                        <div className="dc-head">
-                            <span className="dc-avatar"><i className="fas fa-robot"></i></span>
-                            <div>
-                                <strong>CleBot™</strong>
-                                <small>{inChat || thinking ? 'en línea' : 'en línea'}</small>
+                    {/* ESCENA 1: CHAT */}
+                    <div className={`dscene scene-chat${chatScene ? ' is-active' : ''}`}>
+                        <div className="demo-chat">
+                            <div className="dc-head">
+                                <span className="dc-avatar"><i className="fas fa-robot"></i></span>
+                                <div>
+                                    <strong>CleBot™</strong>
+                                    <small>en línea</small>
+                                </div>
+                            </div>
+
+                            <div className="dc-msgs">
+                                {showP1 && (
+                                    <div className="dmsg dmsg--user"><T k="demo.msg.p1" /></div>
+                                )}
+                                {showBot && (
+                                    <div className="dmsg dmsg--bot"><T k="demo.msg.bot" /></div>
+                                )}
+                                {showP2 && (
+                                    <div className="dmsg dmsg--user">
+                                        <T k="demo.msg.p2" />
+                                        {showTicks && (
+                                            <span className="dmsg-ticks"><i className="fas fa-check-double"></i></span>
+                                        )}
+                                    </div>
+                                )}
+                                {showBot2 && (
+                                    <div className="dmsg dmsg--bot"><T k="demo.msg.bot2" /></div>
+                                )}
+                                {(showTyping1 || showTyping2 || showTyping3) && (
+                                    <div className="dmsg dmsg--bot dmsg--typing">
+                                        <span></span><span></span><span></span>
+                                    </div>
+                                )}
                             </div>
                         </div>
 
-                        <div className="dc-msgs">
-                            {showP1 && (
-                                <div className="dmsg dmsg--user" style={{ animationDelay: '0s' }}>
-                                    <T k="demo.msg.p1" />
-                                </div>
-                            )}
-                            {showBot && (
-                                <div className="dmsg dmsg--bot">
-                                    <T k="demo.msg.bot" />
-                                </div>
-                            )}
-                            {showP2 && (
-                                <div className="dmsg dmsg--user">
-                                    <T k="demo.msg.p2" />
-                                    {t > 7.6 && (
-                                        <span className="dmsg-ticks">
-                                            <i className="fas fa-check-double"></i>
-                                        </span>
-                                    )}
-                                </div>
-                            )}
-                            {(showTyping1 || showTyping2) && (
-                                <div className="dmsg dmsg--bot dmsg--typing">
-                                    <span></span><span></span><span></span>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-
-                    {/* Panel derecho: marca de agua / pensando / calendario */}
-                    <div className="demo-right">
-                        {!calendar && (
-                            <div className={`dr-watermark${thinking ? ' is-dim' : ''}`}>
+                        <div className="demo-right">
+                            <div className="dr-watermark">
                                 <i className="fas fa-tooth"></i>
                                 <span>Clevara Studios™</span>
                             </div>
-                        )}
+                        </div>
+                    </div>
 
-                        <div className={`dr-thinking${thinking ? ' is-active' : ''}`}>
-                            <div className="dt-card">
-                                <div className="dt-spinner">
-                                    <i className="fas fa-circle-notch"></i>
-                                </div>
-                                <div className="dt-steps">
-                                    <p className={thinkIdx === 0 ? 'on' : thinkIdx > 0 ? 'done' : ''}>
-                                        <i className={`fas ${thinkIdx > 0 ? 'fa-check' : 'fa-calendar-days'}`}></i>
-                                        <T k="demo.think1" />
+                    {/* ESCENA 2: PENSANDO */}
+                    <div className={`dscene scene-think${thinkScene ? ' is-active' : ''}`}>
+                        <div className="dt-card">
+                            <div className="dt-spinner">
+                                <span className="dt-ring"></span>
+                                <i className="fas fa-circle-notch"></i>
+                            </div>
+                            <div className="dt-label">CleBot™ está trabajando</div>
+                            <div className="dt-steps">
+                                {THINK_KEYS.map((key, i) => (
+                                    <p
+                                        key={key}
+                                        className={thinkIdx === i ? 'on' : thinkIdx > i ? 'done' : ''}
+                                    >
+                                        <i className={`fas ${thinkIdx > i ? 'fa-check' : THINK_ICONS[i]}`}></i>
+                                        <T k={key} />
                                     </p>
-                                    <p className={thinkIdx === 1 ? 'on' : thinkIdx > 1 ? 'done' : ''}>
-                                        <i className={`fas ${thinkIdx > 1 ? 'fa-check' : 'fa-clock'}`}></i>
-                                        <T k="demo.think2" />
-                                    </p>
-                                    <p className={thinkIdx === 2 ? 'on' : ''}>
-                                        <i className="fas fa-user-doctor"></i>
-                                        <T k="demo.think3" />
-                                    </p>
-                                </div>
+                                ))}
                             </div>
                         </div>
+                    </div>
 
-                        <div className={`dr-calendar${calendar ? ' is-active' : ''}`}>
+                    {/* ESCENA 3: CALENDARIO */}
+                    <div className={`dscene scene-cal${calScene ? ' is-active' : ''}`}>
+                        <div className="dr-calendar is-active">
                             <div className="cal-head">
-                                <strong>Agenda</strong>
+                                <strong>Agenda de la clínica</strong>
                                 <span className="cal-week">Semana · 12–18</span>
                             </div>
                             <div className="cal-grid">
@@ -148,26 +148,29 @@ export default function DemoVideo() {
                                             {i === 4 && (
                                                 <div className="cal-event">
                                                     <strong><T k="demo.event" /></strong>
-                                                    <span><T k="demo.patient" /> · 12:30</span>
+                                                    <span><T k="demo.patient" /> · V 12:30–13:15</span>
                                                 </div>
                                             )}
                                         </div>
                                     ))}
                                 </div>
                             </div>
-                            <div className={`cal-confirm${t >= CONFIRM_AT ? ' is-in' : ''}`}>
+                            <div className={`cal-confirm${t >= 17.8 ? ' is-in' : ''}`}>
                                 <span className="cc-check"><i className="fas fa-check"></i></span>
                                 <div>
                                     <strong><T k="demo.confirmed" /></strong>
-                                    {t >= REMINDER_AT && (
-                                        <small><i className="fas fa-bell"></i> <T k="demo.reminder" /></small>
+                                    {t >= 19.0 && (
+                                        <small>
+                                            <i className="fab fa-whatsapp"></i>{' '}
+                                            <T k="demo.reminder" /> — WhatsApp · 11:30
+                                        </small>
                                     )}
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Outro */}
+                    {/* OUTRO */}
                     <div className={`demo-outro${outro ? ' is-active' : ''}`}>
                         <span className="do-chip">
                             <i className="fas fa-wand-magic-sparkles"></i>
