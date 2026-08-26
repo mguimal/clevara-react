@@ -31,6 +31,7 @@ export default function App() {
 
     return (
         <I18nProvider>
+            <Preloader />
             <LangToggle />
             <Navbar onToggleMenu={() => setMenuOpen((o) => !o)} />
             <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
@@ -41,6 +42,7 @@ export default function App() {
 
             <ClebotsSection expandedCard={expandedCard} onToggleCard={toggleCard} />
             <StrategySection expandedCard={expandedCard} onToggleCard={toggleCard} />
+            <IntegrationsSection />
             <BenefitsSection />
             <AboutSection />
             <FaqSection />

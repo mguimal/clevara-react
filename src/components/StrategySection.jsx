@@ -1,11 +1,13 @@
 import { T } from '../i18n/I18nContext';
 import Reveal from './Reveal';
 import { handleAnchorClick } from '../lib/smoothScroll';
+import useTilt from '../hooks/useTilt';
 
 const ANALYSIS_KEYS = [1, 2, 3, 4, 5, 6].map((n) => `strategy.card.details.analysis${n}`);
 const INTEG_KEYS = [1, 2, 3, 4, 5, 6].map((n) => `strategy.card.details.integ${n}`);
 
 export default function StrategySection({ expandedCard, onToggleCard }) {
+    const tilt = useTilt(expandedCard === 'strategy', 2);
     return (
         <section id="strategy" className="strategy-section">
             <div className="strategy-content-wrapper">
@@ -18,6 +20,7 @@ export default function StrategySection({ expandedCard, onToggleCard }) {
                 <Reveal className="strategy-wrapper" delay={0.2}>
                     <div
                         className={`service-card strategy${expandedCard === 'strategy' ? ' expanded' : ''}`}
+                        {...tilt}
                         onClick={() => onToggleCard('strategy')}
                     >
                         <h3 style={{ fontSize: '1.6rem', fontWeight: 800 }}>

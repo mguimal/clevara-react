@@ -2446,3 +2446,11 @@
         .int-note a:hover { border-color: var(--primary-color); }
         @media (max-width: 1024px) { .int-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 576px) { .int-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+
+        /* Scrollspy: texto blanco sobre la pildora activa */
+        .navbar.top .nav-links a.active,
+        .navbar.scrolled .nav-links a.active {
+            background: var(--primary-color);
+            color: #ffffff !important;
+            box-shadow: 0 8px 22px -8px rgba(37, 99, 235, 0.55);
+        }

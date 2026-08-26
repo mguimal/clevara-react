@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-export default function useTilt(disabled = false) {
+export default function useTilt(disabled = false, intensity = 1) {
     const onMouseEnter = useCallback((e) => {
         e.currentTarget.style.transition = 'transform 0.15s ease-out, box-shadow 0.3s ease, border-color 0.3s ease';
     }, []);
@@ -12,10 +12,13 @@ export default function useTilt(disabled = false) {
             const r = el.getBoundingClientRect();
             const px = (e.clientX - r.left) / r.width - 0.5;
             const py = (e.clientY - r.top) / r.height - 0.5;
+            const rx = (-py * 9 * intensity).toFixed(2);
+            const ry = (px * 12 * intensity).toFixed(2);
+            const lift = Math.min(4 + intensity * 2, 10).toFixed(1);
             el.style.transition = 'transform 0.06s linear, box-shadow 0.3s ease, border-color 0.3s ease';
-            el.style.transform = `translateY(-4px) perspective(1100px) rotateX(${(-py * 6).toFixed(2)}deg) rotateY(${(px * 8).toFixed(2)}deg)`;
+            el.style.transform = `translateY(-${lift}px) perspective(1100px) rotateX(${rx}deg) rotateY(${ry}deg)`;
         },
-        [disabled]
+        [disabled, intensity]
     );
 
     const onMouseLeave = useCallback((e) => {

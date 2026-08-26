@@ -2,13 +2,16 @@ import { T } from '../i18n/I18nContext';
 import Reveal from './Reveal';
 import { STARTER_BLOCKS } from '../data/content';
 import { handleAnchorClick } from '../lib/smoothScroll';
+import useTilt from '../hooks/useTilt';
 
 export default function StarterCard({ expanded, onToggle }) {
+    const tilt = useTilt(expanded, 2);
     return (
         <Reveal className="starter-wrapper" delay={0.15}>
             <div className="starter-badge"><T k="clebots.starter.badge" /></div>
             <div
                 className={`service-card starter${expanded ? ' expanded' : ''}`}
+                    {...tilt}
                 onClick={(e) => {
                     if (e.target.closest('.starter-block') || e.target.closest('.starter-trust')) return;
                     onToggle('starter');

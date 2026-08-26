@@ -31,7 +31,7 @@ function DetailsColumn({ blocks }) {
 }
 
 export default function PlanCard({ plan, expanded, onToggle }) {
-    const tilt = useTilt(expanded);
+    const tilt = useTilt(expanded, 1.4);
     return (
         <div
             className={`service-card ${plan.id}${expanded ? ' expanded' : ''}`}
