@@ -205,7 +205,7 @@ export const FOOTER_LEGAL_LINKS = [
 ];
 
 export const INTEGRATIONS = [
-    { name: 'WhatsApp Business', subKey: 'int.s1', domain: 'whatsapp.com', color: '25D366' },
+    { name: 'WhatsApp Business', subKey: 'int.s1', domain: 'whatsapp.com', color: '25D366', logo: '/what.png' },
     { name: 'Google Workspace', subKey: 'int.s4', domain: 'workspace.google.com', color: '4285F4' },
     { name: 'Office 365', subKey: 'int.s5', domain: 'microsoft.com', color: 'D83B01' },
     { name: 'HubSpot', subKey: 'int.s6', domain: 'hubspot.com', color: 'FF7A59' },

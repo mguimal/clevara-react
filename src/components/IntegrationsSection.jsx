@@ -19,7 +19,7 @@ export default function IntegrationsSection() {
                     >
                         <span className="int-icon" style={{ background: `${'#'}${intg.color}14`, borderColor: `${'#'}${intg.color}30` }}>
                             <img
-                                src={`https://www.google.com/s2/favicons?domain=${intg.domain}&sz=128`}
+                                src={intg.logo || `https://www.google.com/s2/favicons?domain=${intg.domain}&sz=128`}
                                 alt={intg.name}
                                 loading="lazy"
                             />
