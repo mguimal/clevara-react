@@ -11,23 +11,74 @@ const THINK_ICONS = ['fa-calendar-days', 'fa-clock', 'fa-user-clock', 'fa-user-d
 
 export default function DemoVideo() {
     const [t, setT] = useState(0);
+    const stageRef = useRef(null);
+    const playingRef = useRef(false);
+    const elapsedRef = useRef(0);
+    const startRef = useRef(0);
+    const lastFrameRef = useRef(0);
 
     useEffect(() => {
+        const el = stageRef.current;
+        if (!el) return undefined;
         if (document.documentElement.classList.contains('low-power')) {
             setT(18.4);
             return undefined;
         }
-        let start = performance.now();
+
         let raf = 0;
-        let last = 0;
-        const loop = (now) => {
-            raf = requestAnimationFrame(loop);
-            if (now - last < 120) return;
-            last = now;
-            setT(((now - start) / 1000) % DURATION);
+
+        const tick = (now) => {
+            if (!playingRef.current) return;
+            if (now - lastFrameRef.current < 120) {
+                raf = requestAnimationFrame(tick);
+                return;
+            }
+            lastFrameRef.current = now;
+            const elapsed = elapsedRef.current + (now - startRef.current) / 1000;
+            if (elapsed >= DURATION) {
+                elapsedRef.current = DURATION;
+                setT(DURATION);
+                playingRef.current = false;
+                return;
+            }
+            setT(elapsed);
+            raf = requestAnimationFrame(tick);
         };
-        raf = requestAnimationFrame(loop);
-        return () => cancelAnimationFrame(raf);
+
+        const play = () => {
+            if (playingRef.current) return;
+            playingRef.current = true;
+            startRef.current = performance.now();
+            lastFrameRef.current = 0;
+            raf = requestAnimationFrame(tick);
+        };
+
+        const pauseAndReset = () => {
+            playingRef.current = false;
+            cancelAnimationFrame(raf);
+            elapsedRef.current = 0;
+            setT(0);
+        };
+
+        const io = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    elapsedRef.current = 0;
+                    setT(0);
+                    play();
+                } else {
+                    pauseAndReset();
+                }
+            },
+            { threshold: 0.45 }
+        );
+        io.observe(el);
+
+        return () => {
+            playingRef.current = false;
+            cancelAnimationFrame(raf);
+            io.disconnect();
+        };
     }, []);
 
     const chatScene = t < THINK_START;
@@ -46,7 +97,7 @@ export default function DemoVideo() {
     thinkIdx = Math.max(0, Math.min(THINK_KEYS.length - 1, thinkIdx));
 
     return (
-        <div className="demo-stage">
+        <div className="demo-stage" ref={stageRef}>
             <div className="demo-window">
                 <div className="demo-chrome">
                     <span className="dc-dot dc-red"></span>
