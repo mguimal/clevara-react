@@ -1,5 +1,6 @@
 import { T } from '../i18n/I18nContext';
 import Reveal from './Reveal';
+import useTilt from '../hooks/useTilt';
 
 function DetailsColumn({ blocks }) {
     return (
@@ -30,10 +31,12 @@ function DetailsColumn({ blocks }) {
 }
 
 export default function PlanCard({ plan, expanded, onToggle }) {
+    const tilt = useTilt(expanded);
     return (
         <div
             className={`service-card ${plan.id}${expanded ? ' expanded' : ''}`}
             onClick={() => onToggle(plan.id)}
+            {...tilt}
         >
             <h3>CleBot™ <span className="clebot-name"><T k={`clebots.${plan.id}.name`} /></span></h3>
             <p className="service-tagline"><T k={`clebots.${plan.id}.tagline`} /></p>

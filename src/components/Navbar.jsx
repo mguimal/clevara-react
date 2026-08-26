@@ -5,6 +5,7 @@ import { handleAnchorClick } from '../lib/smoothScroll';
 
 export default function Navbar({ onToggleMenu }) {
     const [mode, setMode] = useState('top');
+    const [activeId, setActiveId] = useState('inicio');
 
     useEffect(() => {
         let ticking = false;
@@ -25,6 +26,28 @@ export default function Navbar({ onToggleMenu }) {
             window.removeEventListener('scroll', onScroll);
             clearTimeout(timer);
         };
+    }, []);
+
+    useEffect(() => {
+        let ticking = false;
+        const update = () => {
+            ticking = false;
+            let cur = 'inicio';
+            ['inicio', 'clebots', 'strategy', 'beneficios', 'nosotros', 'faq'].forEach((id) => {
+                const el = document.getElementById(id);
+                if (el && el.offsetTop - 150 <= window.pageYOffset) cur = id;
+            });
+            setActiveId(cur);
+        };
+        const onScroll = () => {
+            if (!ticking) {
+                ticking = true;
+                requestAnimationFrame(update);
+            }
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        update();
+        return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
     return (
@@ -51,7 +74,11 @@ export default function Navbar({ onToggleMenu }) {
             <ul className="nav-links" id="navLinks">
                 {NAV_LINKS.map((link) => (
                     <li key={link.id}>
-                        <a href={`#${link.id}`} onClick={(e) => handleAnchorClick(e, `#${link.id}`)}>
+                        <a
+                            href={`#${link.id}`}
+                            className={activeId === link.id ? ' active' : ''}
+                            onClick={(e) => handleAnchorClick(e, `#${link.id}`)}
+                        >
                             <T k={link.key} />
                         </a>
                     </li>

@@ -9,6 +9,9 @@ export function I18nProvider({ children }) {
             const saved = localStorage.getItem('clevara-lang');
             if (saved === 'es' || saved === 'en') return saved;
         } catch (e) {}
+        if (typeof navigator !== 'undefined' && navigator.language && /^en/i.test(navigator.language)) {
+            return 'en';
+        }
         return 'es';
     });
 

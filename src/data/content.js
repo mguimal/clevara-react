@@ -203,3 +203,11 @@ export const FOOTER_LEGAL_LINKS = [
     { key: 'footer.links2.privacy' },
     { key: 'footer.links2.cookies' },
 ];
+
+export const INTEGRATIONS = [
+    { name: 'WhatsApp Business', subKey: 'int.s1', icon: 'fab fa-whatsapp', color: '#25D366' },
+    { name: 'Google Calendar', subKey: 'int.s2', icon: 'fab fa-google', color: '#4285F4' },
+    { name: 'Google Sheets', subKey: 'int.s3', icon: 'fas fa-table-cells', color: '#0F9D58' },
+    { name: 'Google Workspace', subKey: 'int.s4', icon: 'fab fa-google-drive', color: '#4285F4' },
+    { name: 'Office 365', subKey: 'int.s5', icon: 'fab fa-microsoft', color: '#D83B01' },
+];
