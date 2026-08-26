@@ -1,0 +1,69 @@
+/* MagicBento adaptado · tarjetas de beneficios · azul de marca */
+
+.benefit-premium-card {
+    --glow-x: 50%;
+    --glow-y: 50%;
+    --glow-intensity: 0;
+    --glow-radius: 300px;
+}
+
+/* Borde luminoso que sigue al cursor */
+.magic-bento-card--border-glow::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1.5px;
+    border-radius: inherit;
+    background: radial-gradient(
+        var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+        rgba(37, 99, 235, calc(var(--glow-intensity) * 0.95)) 0%,
+        rgba(14, 165, 233, calc(var(--glow-intensity) * 0.5)) 35%,
+        transparent 65%
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 4;
+    transition: opacity 0.25s ease;
+}
+
+.magic-bento-card--border-glow:hover {
+    box-shadow:
+        0 22px 44px -20px rgba(37, 99, 235, 0.35),
+        0 0 26px rgba(14, 165, 233, 0.18);
+}
+
+.mb-particle-container:hover .bpc-icon {
+    box-shadow: 0 10px 24px -6px rgba(37, 99, 235, 0.55);
+}
+
+/* Partículas estrella */
+.mb-particle::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: rgba(37, 99, 235, 0.2);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+/* Spotlight global (tema claro: sin blend screen, alphas suaves) */
+.global-spotlight {
+    position: fixed;
+    will-change: transform, opacity;
+    z-index: 5 !important;
+    pointer-events: none;
+}
+
+.bento-section {
+    position: relative;
+}

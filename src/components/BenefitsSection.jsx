@@ -4,6 +4,8 @@ import RoiCalculator from './RoiCalculator';
 import DemoVideo from './DemoVideo';
 import { BENEFIT_ROWS } from '../data/content';
 import { handleAnchorClick } from '../lib/smoothScroll';
+import { ParticleCard, GlobalSpotlight, useMobileDetection } from './MagicBento';
+import { useRef } from 'react';
 
 function PremiumStatsBanner() {
     return (
@@ -28,6 +30,9 @@ function PremiumStatsBanner() {
 }
 
 export default function BenefitsSection() {
+    const gridRef = useRef(null);
+    const isMobile = useMobileDetection();
+
     return (
         <section id="beneficios" className="benefits">
             <div className="section-title">
@@ -54,14 +59,23 @@ export default function BenefitsSection() {
 
             <RoiCalculator />
 
-            <div className="benefits-premium-grid">
+            <div className="benefits-premium-grid bento-section" ref={gridRef}>
+                <GlobalSpotlight gridRef={gridRef} disableAnimations={isMobile} spotlightRadius={300} glowColor="37, 99, 235" />
                 {BENEFIT_ROWS.map((row) => (
-                    <Reveal key={row.titleKey} variant="fade-in" delay={row.delay} className="benefit-premium-card">
-                        <div className="bpc-icon">
-                            <i className={`fas ${row.icon}`}></i>
-                        </div>
-                        <h3><T k={row.titleKey} /></h3>
-                        <T as="p" className="bpc-text" k={row.descKey} />
+                    <Reveal key={row.titleKey} variant="fade-in" delay={row.delay}>
+                        <ParticleCard
+                            className="benefit-premium-card magic-bento-card--border-glow magic-bento-card"
+                            disableAnimations={isMobile}
+                            particleCount={9}
+                            glowColor="37, 99, 235"
+                            clickEffect
+                        >
+                            <div className="bpc-icon">
+                                <i className={`fas ${row.icon}`}></i>
+                            </div>
+                            <h3><T k={row.titleKey} /></h3>
+                            <T as="p" className="bpc-text" k={row.descKey} />
+                        </ParticleCard>
                     </Reveal>
                 ))}
             </div>
