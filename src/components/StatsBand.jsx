@@ -1,4 +1,5 @@
 import { T } from '../i18n/I18nContext';
+import CountUp from './CountUp';
 
 export default function StatsBand() {
     return (
