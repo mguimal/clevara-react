@@ -11,11 +11,10 @@ export default function IntegrationsSection() {
                 <Reveal as="p" variant="fade-in" delay={0.1}><T k="int.subtitle" /></Reveal>
             </div>
             <div className="int-grid">
-                {INTEGRATIONS.map((intg, i) => (
+                {INTEGRATIONS.map((intg) => (
                     <Reveal
                         key={intg.name}
                         variant="scale-in"
-                        delay={0.1 + i * 0.08}
                         className="int-tile"
                     >
                         <span className="int-icon" style={{ background: `${'#'}${intg.color}14`, borderColor: `${'#'}${intg.color}30` }}>
