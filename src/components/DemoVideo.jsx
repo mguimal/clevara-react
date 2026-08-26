@@ -40,9 +40,7 @@ export default function DemoVideo() {
     const showBot = t >= 3.1;
     const showTyping2 = t >= 4.9 && t < 6.3;
     const showP2 = t >= 6.3;
-    const showTyping3 = t >= 7.6 && t < 8.6;
-    const showBot2 = t >= 8.6;
-    const showTicks = t >= 7.2;
+        const showTicks = t >= 7.2;
 
     let thinkIdx = Math.floor((t - THINK_START) / 1.2);
     thinkIdx = Math.max(0, Math.min(THINK_KEYS.length - 1, thinkIdx));
@@ -85,10 +83,7 @@ export default function DemoVideo() {
                                         )}
                                     </div>
                                 )}
-                                {showBot2 && (
-                                    <div className="dmsg dmsg--bot"><T k="demo.msg.bot2" /></div>
-                                )}
-                                {(showTyping1 || showTyping2 || showTyping3) && (
+                                {(showTyping1 || showTyping2) && (
                                     <div className="dmsg dmsg--bot dmsg--typing">
                                         <span></span><span></span><span></span>
                                     </div>
