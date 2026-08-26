@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useI18n, T } from '../i18n/I18nContext';
 import IridescenceCanvas from './IridescenceCanvas';
 import SpecularButton from './SpecularButton';
+import FluidNav from './FluidNav';
 import { handleAnchorClick, scrollToSection } from '../lib/smoothScroll';
 
 export default function Hero() {
@@ -39,6 +40,10 @@ export default function Hero() {
                         <T k="hero.cta2" />
                     </a>
                 </div>
+            </div>
+
+            <div className="fluid-nav-wrap-hero">
+                <FluidNav />
             </div>
         </section>
     );
