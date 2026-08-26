@@ -2458,3 +2458,203 @@
             color: #ffffff !important;
             box-shadow: 0 8px 22px -8px rgba(37, 99, 235, 0.55);
         }
+
+        /* ===== SOBRE NOSOTROS · rediseño premium editorial ===== */
+        .about-statement {
+            position: relative;
+            width: 100%;
+            padding: 54px 58px 46px;
+            border-radius: 32px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.62));
+            backdrop-filter: blur(14px) saturate(150%);
+            -webkit-backdrop-filter: blur(14px) saturate(150%);
+            border: 1px solid rgba(226, 232, 240, 0.95);
+            box-shadow: 0 24px 60px -30px rgba(15, 23, 42, 0.18);
+        }
+        .about-eyebrow {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+        }
+        .as-main h3 {
+            font-size: clamp(1.65rem, 3vw, 2.35rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.18;
+            color: #0f172a;
+            max-width: 640px;
+            margin: 0 0 18px;
+        }
+        .as-main h3 strong {
+            background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .as-text {
+            font-size: 1.02rem;
+            line-height: 1.78;
+            color: #475569;
+            max-width: 700px;
+            margin: 0;
+        }
+        .about-facts {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin-top: 44px;
+            padding-top: 34px;
+            border-top: 1px solid rgba(15, 23, 42, 0.08);
+        }
+        .about-fact {
+            padding: 0 26px;
+            border-left: 1px solid rgba(15, 23, 42, 0.08);
+        }
+        .about-fact:first-child { border-left: none; padding-left: 0; }
+        .af-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            color: var(--primary-color);
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border: 1px solid rgba(37, 99, 235, 0.14);
+            margin-bottom: 13px;
+            transition: transform 0.16s ease-out;
+        }
+        .about-fact:hover .af-icon { transform: scale(1.07); }
+        .about-fact strong {
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.94rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+        .about-fact > span:last-child {
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: #64748b;
+        }
+
+        /* Valores: estilo editorial minimal */
+        .values-grid { gap: 16px; }
+        .value-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.95);
+            border-top: 2px solid rgba(37, 99, 235, 0.25);
+            border-radius: 22px;
+            padding: 32px 28px;
+            text-align: left;
+            box-shadow: 0 10px 30px -20px rgba(15, 23, 42, 0.15);
+        }
+        .value-card:hover {
+            transform: translateY(-4px);
+            border-top-color: var(--primary-color);
+            box-shadow: 0 22px 44px -22px rgba(37, 99, 235, 0.3);
+        }
+        .value-index {
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            color: rgba(37, 99, 235, 0.4);
+            margin-bottom: 16px;
+        }
+        .value-icon {
+            width: 44px;
+            height: 44px;
+            font-size: 1.05rem;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border: 1px solid rgba(37, 99, 235, 0.12);
+            color: var(--primary-color);
+        }
+        .value-card h3 {
+            text-align: left;
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: #0f172a;
+            letter-spacing: -0.01em;
+            margin-bottom: 8px;
+        }
+        .value-card p {
+            text-align: left;
+            font-size: 0.89rem;
+            line-height: 1.65;
+            color: #64748b;
+        }
+
+        /* Cita de filosofía centrada */
+        .about-quote {
+            position: relative;
+            max-width: 780px;
+            margin: 60px auto 0;
+            text-align: center;
+            padding: 48px 40px 42px;
+            border-radius: 28px;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(37, 99, 235, 0.06), transparent 60%),
+                rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.95);
+        }
+        .about-quote::before {
+            content: '\201C';
+            position: absolute;
+            top: -26px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: Georgia, serif;
+            font-size: 6rem;
+            line-height: 1;
+            color: rgba(37, 99, 235, 0.18);
+        }
+        .about-quote h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            margin: 0 0 16px;
+        }
+        .about-quote p {
+            font-size: 0.98rem;
+            line-height: 1.75;
+            color: #475569;
+            max-width: 640px;
+            margin: 0 auto 20px;
+        }
+        .about-quote .highlight-quote {
+            font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+            font-weight: 600;
+            color: #0f172a;
+            font-style: normal;
+            border: none;
+            padding: 0;
+            margin: 0;
+            letter-spacing: -0.02em;
+        }
+
+        @media (max-width: 1024px) {
+            .about-facts { grid-template-columns: repeat(2, 1fr); row-gap: 26px; }
+            .about-fact:nth-child(odd) { border-left: none; padding-left: 0; }
+            .about-statement { padding: 42px 38px; }
+        }
+        @media (max-width: 640px) {
+            .about-statement { padding: 32px 24px; border-radius: 26px; }
+            .about-facts { grid-template-columns: 1fr; }
+            .about-fact { border-left: none; padding-left: 0; }
+            .about-quote { padding: 36px 22px 30px; }
+        }
