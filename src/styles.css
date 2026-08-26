@@ -2359,22 +2359,38 @@
         .integraciones { position: relative; }
         .int-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
             width: 100%;
         }
         .int-icon img {
-            width: 26px;
-            height: 26px;
+            width: 27px;
+            height: 27px;
+            object-fit: contain;
             display: block;
+        }
+        .int-more-text {
+            margin: 20px 0 0;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-color);
+            opacity: 0.6;
+        }
+        .int-more-text i {
+            font-size: 0.7rem;
+            color: var(--primary-color);
+            margin-right: 4px;
+            vertical-align: 2px;
         }
         .int-tile {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 9px;
-            padding: 24px 12px 20px;
+            gap: 8px;
+            padding: 20px 8px 16px;
             border-radius: 20px;
             background: var(--glass-bg);
             backdrop-filter: blur(10px) saturate(150%);
@@ -2408,11 +2424,6 @@
             line-height: 1.25;
         }
         .int-tile small { font-size: 0.66rem; color: var(--text-secondary, #64748b); }
-        .int-more .int-icon {
-            color: var(--text-color);
-            background: rgba(100, 116, 139, 0.1);
-            border-color: rgba(100, 116, 139, 0.2);
-        }
         .int-note {
             width: 100%;
             margin-top: 24px;
@@ -2435,7 +2446,6 @@
         .int-note a:hover { border-color: var(--primary-color); }
         @media (max-width: 1024px) { .int-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 640px) { .int-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 576px) { .int-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
 
         /* Scrollspy: texto blanco sobre la pildora activa */
         .navbar.top .nav-links a.active,

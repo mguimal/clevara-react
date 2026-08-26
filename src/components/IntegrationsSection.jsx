@@ -29,13 +29,10 @@ export default function IntegrationsSection() {
                         <small><T k={intg.subKey} /></small>
                     </Reveal>
                 ))}
-                <Reveal variant="scale-in" delay={0.55} className="int-tile int-more">
-                    <span className="int-icon">
-                        <i className="fas fa-plus"></i>
-                    </span>
-                    <strong><T k="int.more" /></strong>
-                </Reveal>
             </div>
+            <p className="int-more-text">
+                <i className="fas fa-plus"></i> <T k="int.more" />…
+            </p>
             <Reveal className="int-note">
                 <p>
                     <i className="fas fa-plug-circle-check"></i>{' '}
