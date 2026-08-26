@@ -7,7 +7,7 @@ const ANALYSIS_KEYS = [1, 2, 3, 4, 5, 6].map((n) => `strategy.card.details.analy
 const INTEG_KEYS = [1, 2, 3, 4, 5, 6].map((n) => `strategy.card.details.integ${n}`);
 
 export default function StrategySection({ expandedCard, onToggleCard }) {
-    const tilt = useTilt(expandedCard === 'strategy', 2);
+    const tilt = useTilt(expandedCard === 'strategy', 1.35);
     return (
         <section id="strategy" className="strategy-section">
             <div className="strategy-content-wrapper">
