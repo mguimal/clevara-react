@@ -2545,7 +2545,7 @@
         }
 
         /* Valores: estilo editorial minimal */
-        .values-grid { gap: 16px; }
+        .values-grid { gap: 16px; margin-top: 34px; }
         .value-card {
             background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(10px);
